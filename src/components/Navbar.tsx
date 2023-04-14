@@ -1,10 +1,20 @@
 import AuthContext from "@/context/authContext";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useContext } from "react";
 
 //todo os links da nav bar estão dando refresh na página o q pode ser?
+// do nada foi resolvido eu não sei porque kkkkkk
 function Navbar() {
-  const { token } = useContext(AuthContext);
+  const { token, setToken, setUser } = useContext(AuthContext);
+  const router = useRouter();
+
+  function logOff() {
+    localStorage.removeItem("loggedInUser");
+    setToken("");
+    setUser(undefined);
+    router.push("/");
+  }
 
   return (
     <nav className="flex gap-10">
@@ -18,6 +28,7 @@ function Navbar() {
       {token && (
         <>
           <Link href="/profile">Profile</Link>
+          <button onClick={logOff}>Sair</button>
         </>
       )}
     </nav>

@@ -26,3 +26,15 @@ type AuthContextType = {
   setUser: React.Dispatch<React.SetStateAction<User | undefined>>;
   setToken: React.Dispatch<React.SetStateAction>;
 };
+
+type Question = {
+  _id: string;
+  type: string;
+  heading: string;
+  options: string[];
+  answer: string;
+  level: string;
+  createdBy: string;
+  createdAt: Date;
+  updatedAt: Date;
+};

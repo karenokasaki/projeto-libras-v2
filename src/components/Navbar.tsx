@@ -21,7 +21,7 @@ function Navbar() {
 
           <Link href="/profile" className="flex self-end">
             <Image
-              src="/user-square-svgrepo-com.png"
+              src="/assets/images/user-square-svgrepo-com.png"
               alt="user icon"
               width={20}
               height={20}

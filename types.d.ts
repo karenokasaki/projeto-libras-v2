@@ -31,6 +31,7 @@ type Question = {
   _id: string;
   type: string;
   heading: string;
+  questions: string;
   options: string[];
   answer: string;
   level: string;

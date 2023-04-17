@@ -11,7 +11,6 @@ function Login() {
   async function onSubmit(values: LoginForm) {
     try {
       const response = await api.post("/user/login", values);
-      console.log(response);
 
       localStorage.setItem("loggedInUser", JSON.stringify(response.data));
       setUser(response.data.user);

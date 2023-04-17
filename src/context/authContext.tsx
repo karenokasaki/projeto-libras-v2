@@ -14,7 +14,6 @@ export function AuthProvider(props: AuthProviderProps) {
   useEffect(() => {
     const json = localStorage.getItem("loggedInUser");
     const loggedInUser = JSON.parse(json || '""');
-    console.log("loggedInUser->", loggedInUser);
     if (loggedInUser) {
       setToken(loggedInUser.token);
       setUser(loggedInUser.user);

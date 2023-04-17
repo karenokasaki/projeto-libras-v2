@@ -1,5 +1,13 @@
 import { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
+import Image from "next/image";
+import EscrevaPalavra from "./questionTypes/escrevaPalavra";
+import CliqueImagem from "./questionTypes/cliqueImagem";
+import CompletePalavra from "./questionTypes/completePalavra";
+import EscolhaFrase from "./questionTypes/escolhaFrase";
+import CompleteFrase from "./questionTypes/completeFrase";
+import CliqueVideo from "./questionTypes/cliqueVideo";
+import MontePalavra from "./questionTypes/montePalavra";
 
 export default function Question({ question }: { question: Question }) {
   const [questionType, setQuestionType] = useState<string>();
@@ -9,22 +17,27 @@ export default function Question({ question }: { question: Question }) {
 
   return (
     <div>
+      <h1>{questionType}</h1>
       {questionType === "escreva a palavra" && (
-        <>
-          <div id="heading">
-            <img src={question.heading} alt="test" width={50} height={50} />
-          </div>
-          <div id="question">
-            <h2>{question.questions}</h2>
-          </div>
-          <div id="options">
-            <ReactPlayer url={question.options[0]} />
-          </div>
-          <div>
-            <label htmlFor="answer"></label>
-            <input type="text" name="answer" />
-          </div>
-        </>
+        <EscrevaPalavra question={question} />
+      )}
+      {questionType === "complete a palavra" && (
+        <CompletePalavra question={question} />
+      )}
+      {questionType === "clique na imagem" && (
+        <CliqueImagem question={question} />
+      )}
+      {questionType === "escolha a frase" && (
+        <EscolhaFrase question={question} />
+      )}
+      {questionType === "complete a frase" && (
+        <CompleteFrase question={question} />
+      )}
+      {questionType === "clique no video" && (
+        <CliqueVideo question={question} />
+      )}
+      {questionType === "monte a palavra" && (
+        <MontePalavra question={question} />
       )}
     </div>
   );

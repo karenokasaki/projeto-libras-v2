@@ -3,7 +3,13 @@ export default function MontePalavra({ question }: { question: Question }) {
   return (
     <>
       <div id="heading">
-        <ReactPlayer url={question.heading} />
+        <ReactPlayer
+          playing={true}
+          loop={true}
+          controls={true}
+          muted={true}
+          url={question.heading}
+        />
       </div>
       <div id="question">
         <h2>{question.questions}</h2>

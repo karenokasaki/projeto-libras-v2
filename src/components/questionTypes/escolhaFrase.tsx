@@ -7,7 +7,13 @@ export default function EscolhaFrase({ question }: { question: Question }) {
         <img src={question.heading} alt="cabeçalho" />
       </div>
       <div id="question">
-        <ReactPlayer url={question.questions} />
+        <ReactPlayer
+          url={question.questions}
+          playing={true}
+          loop={true}
+          controls={true}
+          muted={true}
+        />
       </div>
       <div id="options">
         <select>

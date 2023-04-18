@@ -4,7 +4,13 @@ export default function CompleteFrase({ question }: { question: Question }) {
   return (
     <>
       <div id="heading">
-        <ReactPlayer url={question.heading} />
+        <ReactPlayer
+          url={question.heading}
+          playing={true}
+          loop={true}
+          controls={true}
+          muted={true}
+        />
       </div>
       <div id="question">
         <h2>{question.questions}</h2>

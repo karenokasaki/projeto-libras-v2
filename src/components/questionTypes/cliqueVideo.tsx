@@ -10,7 +10,13 @@ export default function CliqueVideo({ question }: { question: Question }) {
       </div>
       <div id="options">
         {question.options.map((option, i) => (
-          <ReactPlayer key={i} url={option} />
+          <ReactPlayer
+            key={i}
+            url={option}
+            playing={true}
+            loop={true}
+            muted={true}
+          />
         ))}
       </div>
     </>

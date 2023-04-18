@@ -48,7 +48,7 @@ function MonteAPalavra() {
     try {
       const url = await handleUpload(picture);
 
-      values.attach = url;
+      //values.attach = url;
       values.options = values.answer.split("");
 
       const response = await api.post("/question/create", values);

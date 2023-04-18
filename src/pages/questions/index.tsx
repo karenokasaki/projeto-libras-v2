@@ -51,7 +51,7 @@ export default function Questions() {
               <Link href={`/questions/${question._id}`}>
                 <h2>{question.level + " "}</h2>
 
-                <h3>{i}</h3>
+                <h3>{i + 1}</h3>
               </Link>
             </div>
           );

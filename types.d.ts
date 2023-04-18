@@ -28,14 +28,15 @@ type AuthContextType = {
 };
 
 type Question = {
-  _id: string;
+  _id?: string;
   type: string;
   heading: string;
   questions: string;
   options: string[];
   answer: string;
   level: string;
-  createdBy: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdBy?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+  attach?: string;
 };

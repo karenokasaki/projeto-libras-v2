@@ -9,7 +9,7 @@ import Image from "next/image";
 function Navbar() {
   const { token, setToken, setUser } = useContext(AuthContext);
   const router = useRouter();
-const [toggle, setTogle] = useState(false);
+  const [toggle, setTogle] = useState(false);
   function logOff() {
     localStorage.removeItem("loggedInUser");
     setToken("");
@@ -17,13 +17,11 @@ const [toggle, setTogle] = useState(false);
     router.push("/");
   }
 
-
   const toggleMenu = () => {
     setTogle(!toggle);
   };
 
   return (
-
     <>
       <nav className="hidden justify-center gap-48 items-center h-24 lg:flex  bg-gradient-to-r from-blue-100 to-blue-200  ">
         <Link href="/">Página inicial</Link>
@@ -73,7 +71,10 @@ const [toggle, setTogle] = useState(false);
                       className=" self-end"
                     />
                   </Link>
-                 <button onClick={logOff}>Sair</button>
+                </li>
+                <li>
+                  <button onClick={logOff}>Sair</button>
+                </li>
               </ul>
             ) : (
               <>
@@ -85,7 +86,6 @@ const [toggle, setTogle] = useState(false);
         )}
       </nav>
     </>
-
   );
 }
 

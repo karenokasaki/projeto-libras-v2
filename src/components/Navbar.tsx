@@ -6,7 +6,7 @@ import Image from "next/image";
 //todo os links da nav bar estão dando refresh na página o q pode ser?
 // do nada foi resolvido eu não sei porque kkkkkk
 function Navbar() {
-  const { token, setToken, setUser } = useContext(AuthContext);
+  const { token, setToken, setUser, user } = useContext(AuthContext);
   const router = useRouter();
 
   function logOff() {
@@ -17,7 +17,7 @@ function Navbar() {
   }
 
   return (
-    <nav className="flex justify-center gap-48 items-center h-24">
+    <nav className="flex justify-center gap-8 items-center h-24 align-middle">
       <Link href="/">Página inicial</Link>
       {!token && (
         <>
@@ -25,23 +25,26 @@ function Navbar() {
           <Link href="/login">Entrar</Link>
         </>
       )}
+      {user?.role === "ADMIN" && (
+        <>
+          <Link href="/admin">Admin</Link>
+        </>
+      )}
       {token && (
         <>
-          <Link href="/profile">Profile</Link>
           <Link href="/questions">Perguntas</Link>
 
-          <Link href="/profile" className="flex self-end">
+          <Link href="/profile" className="flex">
             <Image
               src="/assets/images/user-square-svgrepo-com.png"
               alt="user icon"
               width={20}
               height={20}
-              className=" self-end"
+              className=""
             />
           </Link>
           <button onClick={logOff}>Sair</button>
         </>
-       
       )}
     </nav>
   );

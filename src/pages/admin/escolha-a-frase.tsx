@@ -2,20 +2,16 @@ import { isAdmin } from "@/utils/isAdmin";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
-function CliqueNaImagem() {
-
-  
-
+function EscolhaAFrase() {
   const router = useRouter();
   useEffect(() => {
     !isAdmin() ? router.push("/") : null;
   }, [router]);
-
   return (
     <div>
-      <h1>Clique na imagem</h1>
+      <h1>Escolha a Frase</h1>
     </div>
   );
 }
 
-export default CliqueNaImagem;
+export default EscolhaAFrase;

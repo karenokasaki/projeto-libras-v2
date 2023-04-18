@@ -1,17 +1,29 @@
 import AuthContext from "@/context/authContext";
 import Link from "next/link";
+
+import { useRouter } from "next/router";
 import { useContext, useState } from "react";
 import Image from "next/image";
 //todo os links da nav bar estão dando refresh na página o q pode ser?
+// do nada foi resolvido eu não sei porque kkkkkk
 function Navbar() {
-  const [toggle, setTogle] = useState(false);
-  const { token } = useContext(AuthContext);
+  const { token, setToken, setUser } = useContext(AuthContext);
+  const router = useRouter();
+const [toggle, setTogle] = useState(false);
+  function logOff() {
+    localStorage.removeItem("loggedInUser");
+    setToken("");
+    setUser(undefined);
+    router.push("/");
+  }
+
 
   const toggleMenu = () => {
     setTogle(!toggle);
   };
 
   return (
+
     <>
       <nav className="hidden justify-center gap-48 items-center h-24 lg:flex  bg-gradient-to-r from-blue-100 to-blue-200  ">
         <Link href="/">Página inicial</Link>
@@ -61,9 +73,7 @@ function Navbar() {
                       className=" self-end"
                     />
                   </Link>
-                </li>
-                <li></li>
-                <li></li>
+                 <button onClick={logOff}>Sair</button>
               </ul>
             ) : (
               <>
@@ -75,6 +85,7 @@ function Navbar() {
         )}
       </nav>
     </>
+
   );
 }
 

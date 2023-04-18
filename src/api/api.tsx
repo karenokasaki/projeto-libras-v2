@@ -11,7 +11,6 @@ api.interceptors.request.use(
 
     if (loggedInUser) {
       config.headers.Authorization = `Bearer ${loggedInUser.token}`;
-      config.headers["Content-Type"] = "application/json";
       //cross origin
       config.headers["Access-Control-Allow-Origin"] = "*";
     }

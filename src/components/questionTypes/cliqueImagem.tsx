@@ -1,29 +1,25 @@
 import api from "@/api/api";
-import AuthContext from "@/context/authContext";
-import { useContext, useEffect, useState } from "react";
+import { useState } from "react";
 import ReactPlayer from "react-player";
 export default function CliqueImagem({ question }: { question: Question }) {
   const [message, setMessage] = useState("");
-  const [userAnswer, setUserAnswer] = useState("");
 
-  const checkAnswer = async (answer: string) => {
-    if (!answer || question.answer.toString() !== answer.toString()) {
-      setMessage("Resposta incorreta :/");
+  const checkAnswer = async (i: number, id: string | undefined) => {
+    //checa se errou
+    if (i.toString() !== question.answer) {
+      await api.get(`/user/remove-points/${id}`);
+      setMessage("resposta errada");
+      return;
     }
-    if (question.answer.toString() === answer.toString()) {
-      try {
-        const addPoints = await api.get("/user/add-points");
-        console.log(addPoints);
-        setMessage("resposta certa! parabéns");
-      } catch (error) {
-        console.log(error);
-      }
+
+    try {
+      await api.get(`/user/add-points/${id}`);
+      setMessage("resposta certa! parabéns");
+    } catch (error) {
+      console.log(error);
     }
   };
 
-  useEffect(() => {
-    console.log(userAnswer);
-  }, [userAnswer]);
   return (
     <main className="flex justify-center items-center flex-col mt-8">
       <div id="heading" className="mb-6 w-[80vw] h-[40vh]">
@@ -48,8 +44,7 @@ export default function CliqueImagem({ question }: { question: Question }) {
               alt={`opção ${i}`}
               className="w-[25vw] h-[20vh] object-contain"
               onClick={(e) => {
-                setUserAnswer(`${i}`);
-                checkAnswer(userAnswer);
+                checkAnswer(i, question._id);
               }}
             />
           );

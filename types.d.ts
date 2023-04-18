@@ -36,7 +36,7 @@ type Question = {
   answer: string;
   level: string;
   createdBy?: string;
-  createdAt?: Date;
-  updatedAt?: Date;
+  createdAt?: strin;
+  updatedAt?: string;
   attach?: string;
 };

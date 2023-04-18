@@ -16,7 +16,7 @@ export default function Question({ question }: { question: Question }) {
   }, [question]);
 
   return (
-    <div>
+    <div className="flex flex-col justify-center items-center ">
       <h1>{questionType}</h1>
       {questionType === "escreva a palavra" && (
         <EscrevaPalavra question={question} />

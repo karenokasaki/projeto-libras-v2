@@ -10,7 +10,13 @@ export default function EscrevaPalavra({ question }: { question: Question }) {
         <h2>{question.questions}</h2>
       </div>
       <div id="options">
-        <ReactPlayer url={question.options[0]} />
+        <ReactPlayer
+          url={question.options[0]}
+          playing={true}
+          loop={true}
+          controls={true}
+          muted={true}
+        />
       </div>
       <div>
         <label htmlFor="answer"></label>

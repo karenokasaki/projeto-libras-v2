@@ -2,8 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .toggle-menu {
+    @apply translate-x-0;
+  }
+}
+
 @layer components {
   body {
-    @apply bg-cyan-100;
+    @apply bg-white;
   }
 }

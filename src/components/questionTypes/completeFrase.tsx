@@ -1,6 +1,38 @@
+import { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
+import api from "@/api/api";
 
-export default function CompleteFrase({ question }: { question: Question }) {
+export default function CompleteFrase({
+  question,
+  setIndex,
+}: {
+  question: Question;
+  setIndex: React.Dispatch<React.SetStateAction<number>>;
+}) {
+  const [userAnswer, setUserAnswer] = useState("");
+  const [message, setMessage] = useState("");
+  const checkAnswer = async (id: string | undefined) => {
+    //checa se errou
+    if (userAnswer !== question.answer) {
+      await api.get(`/user/remove-points/${id}`);
+      setMessage("resposta errada");
+      return;
+    }
+
+    try {
+      await api.get(`/user/add-points/${id}`);
+      setMessage("resposta certa! parabéns");
+      setTimeout(() => {
+        setIndex((prev) => prev + 1);
+      }, 1000);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    checkAnswer(question._id);
+    console.log(userAnswer);
+  }, [userAnswer]);
   return (
     <>
       <div id="heading">
@@ -17,7 +49,12 @@ export default function CompleteFrase({ question }: { question: Question }) {
       </div>
       <div id="options">
         <label htmlFor="answer">Escreva a resposta</label>
-        <input type="text" name="answer" />
+        <input
+          type="text"
+          name="answer"
+          onChange={(e) => setUserAnswer(e.target.value)}
+        />
+        <button onClick={() => checkAnswer(question._id)}> Acertei? </button>
       </div>
     </>
   );

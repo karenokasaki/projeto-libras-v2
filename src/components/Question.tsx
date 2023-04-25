@@ -11,10 +11,10 @@ import MontePalavra from "./questionTypes/montePalavra";
 
 export default function Question({
   question,
+  setIndex,
 }: {
   question: Question;
-  index: number;
-  setIndex: (index: number) => void;
+  setIndex: React.Dispatch<React.SetStateAction<number>>;
 }) {
   const [questionType, setQuestionType] = useState<string>();
   useEffect(() => {
@@ -25,25 +25,25 @@ export default function Question({
     <div className="flex flex-col justify-center items-center ">
       <h1>{questionType}</h1>
       {questionType === "escreva a palavra" && (
-        <EscrevaPalavra question={question} />
+        <EscrevaPalavra question={question} setIndex={setIndex} />
       )}
       {questionType === "complete a palavra" && (
-        <CompletePalavra question={question} />
+        <CompletePalavra question={question} setIndex={setIndex} />
       )}
       {questionType === "clique na imagem" && (
-        <CliqueImagem question={question} />
+        <CliqueImagem question={question} setIndex={setIndex} />
       )}
       {questionType === "escolha a frase" && (
-        <EscolhaFrase question={question} />
+        <EscolhaFrase question={question} setIndex={setIndex} />
       )}
       {questionType === "complete a frase" && (
-        <CompleteFrase question={question} />
+        <CompleteFrase question={question} setIndex={setIndex} />
       )}
       {questionType === "clique no video" && (
-        <CliqueVideo question={question} />
+        <CliqueVideo question={question} setIndex={setIndex} />
       )}
       {questionType === "monte a palavra" && (
-        <MontePalavra question={question} />
+        <MontePalavra question={question} setIndex={setIndex} />
       )}
     </div>
   );

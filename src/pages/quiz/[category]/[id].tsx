@@ -7,10 +7,6 @@ export default function SpecificQuestion() {
   const [index, setIndex] = useState(0);
 
   const { id } = router.query;
-  const { data: question, error } = useSWR<Question>(`/question/${id}`);
-  return question ? (
-    <Question question={question} index={index} setIndex={setIndex} />
-  ) : (
-    <h1>loading...</h1>
-  );
+  // const { data: question, error } = useSWR<Question>(`/question/${id}`);
+  return <h1>opa tudo certo</h1>;
 }

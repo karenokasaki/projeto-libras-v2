@@ -39,4 +39,5 @@ type Question = {
   createdAt?: strin;
   updatedAt?: string;
   attach?: string;
+  category: string;
 };

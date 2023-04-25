@@ -9,7 +9,13 @@ import CompleteFrase from "./questionTypes/completeFrase";
 import CliqueVideo from "./questionTypes/cliqueVideo";
 import MontePalavra from "./questionTypes/montePalavra";
 
-export default function Question({ question }: { question: Question }) {
+export default function Question({
+  question,
+}: {
+  question: Question;
+  index: number;
+  setIndex: (index: number) => void;
+}) {
   const [questionType, setQuestionType] = useState<string>();
   useEffect(() => {
     setQuestionType(question.type);

@@ -1,6 +1,12 @@
 import ReactPlayer from "react-player";
 
-export default function EscrevaPalavra({ question }: { question: Question }) {
+export default function EscrevaPalavra({
+  question,
+  setIndex,
+}: {
+  question: Question;
+  setIndex: React.Dispatch<React.SetStateAction<number>>;
+}) {
   return (
     <>
       <div id="heading">

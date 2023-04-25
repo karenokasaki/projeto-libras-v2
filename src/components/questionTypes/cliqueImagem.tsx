@@ -1,7 +1,13 @@
 import api from "@/api/api";
 import { useState } from "react";
 import ReactPlayer from "react-player";
-export default function CliqueImagem({ question }: { question: Question }) {
+export default function CliqueImagem({
+  question,
+  setIndex,
+}: {
+  question: Question;
+  setIndex: React.Dispatch<React.SetStateAction<number>>;
+}) {
   const [message, setMessage] = useState("");
 
   const checkAnswer = async (i: number, id: string | undefined) => {
@@ -15,6 +21,9 @@ export default function CliqueImagem({ question }: { question: Question }) {
     try {
       await api.get(`/user/add-points/${id}`);
       setMessage("resposta certa! parabéns");
+      setTimeout(() => {
+        setIndex((prev) => prev + 1);
+      }, 1000);
     } catch (error) {
       console.log(error);
     }

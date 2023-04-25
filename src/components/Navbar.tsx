@@ -33,7 +33,7 @@ function Navbar() {
         )}
         {token && (
           <div className="flex flex-row justify-between gap-52">
-            <Link href="/questions" prefetch={true}>
+            <Link href="/quiz" prefetch={true}>
               Perguntas
             </Link>
 
@@ -62,7 +62,7 @@ function Navbar() {
             {token ? (
               <ul>
                 {" "}
-                <Link href="/questions">Perguntas</Link>
+                <Link href="/quiz">Perguntas</Link>
                 <Link href="/profile" className="flex self-end">
                   <Image
                     src="/assets/images/user-square-svgrepo-com.png"

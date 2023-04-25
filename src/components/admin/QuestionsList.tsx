@@ -16,7 +16,6 @@ function QuestionList() {
     try {
       await api.delete(`/question/${id}`);
       mutate("/question/get-all");
-
     } catch (error) {
       console.log(error);
     }
@@ -61,7 +60,7 @@ function QuestionList() {
                         scope="col"
                         className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                       >
-                        Nível
+                        Categoria
                       </th>
                       <th
                         scope="col"
@@ -79,6 +78,7 @@ function QuestionList() {
                   </thead>
                   <tbody className="divide-y divide-gray-200 bg-white">
                     {questions?.map((question) => {
+                      console.log(question);
                       let data = new Date(question.createdAt);
                       let dataFormatada = data.toLocaleDateString("pt-BR");
                       return (
@@ -90,7 +90,7 @@ function QuestionList() {
                             {question.questions}
                           </td>
                           <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                            {question.level}
+                            {question.category}
                           </td>
                           <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                             {dataFormatada}

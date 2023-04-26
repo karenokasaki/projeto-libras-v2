@@ -18,6 +18,7 @@ function EscrevaAPalavra() {
     answer: "",
     level: "fácil",
     attach: "",
+    category: "",
   };
 
   useEffect(() => {

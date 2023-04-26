@@ -31,6 +31,7 @@ function CompeteAFrase() {
     answer: "",
     level: "fácil",
     attach: "",
+    category: "",
   };
 
   async function handleImage(event: React.ChangeEvent<HTMLInputElement>) {

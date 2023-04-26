@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import Link from "next/link";
+import { Suspense, useEffect, useState } from "react";
+import LoadingQuestion from "@/components/loading/loadingQuestion";
 import Question from "@/components/Question";
 import useSWR from "swr";
 
@@ -10,18 +10,20 @@ export default function CategoryPage() {
   const { data: questions, error } = useSWR<Question[]>(
     `/question/get-by-category/${category}`
   );
-  console.log(questions);
+
   const [index, setIndex] = useState<number>(0);
   const [start, setStart] = useState(false);
   const [question, setQuestion] = useState<Question>();
+  // const [loading, setLoading] = useState(false)
+
   useEffect(() => {
     questions && setQuestion(questions[index]);
-  }, [index]);
+  }, [index, questions]);
 
   return (
     <>
-      {!start && (
-        <div>
+      {!start && question && (
+        <div className="flex justify-center items-center flex-col">
           <h1>Bem vindo à categoria: {category}</h1>
           <p>Vamos começar?</p>
 
@@ -31,7 +33,6 @@ export default function CategoryPage() {
 
       {question ? (
         start &&
-        question &&
         setIndex && <Question question={question} setIndex={setIndex} />
       ) : (
         <h1>terminou</h1>

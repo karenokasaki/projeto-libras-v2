@@ -18,6 +18,7 @@ function EscolhaAFrase() {
     answer: "",
     level: "fácil",
     attach: "",
+    category: "",
   };
 
   useEffect(() => {

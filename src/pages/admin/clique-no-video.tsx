@@ -18,6 +18,7 @@ function CliqueNoVideo() {
     answer: "0",
     level: "fácil",
     attach: "",
+    category: "",
   };
 
   useEffect(() => {

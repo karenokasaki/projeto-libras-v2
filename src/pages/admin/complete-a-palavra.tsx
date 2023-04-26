@@ -32,6 +32,7 @@ function CompleteAPalavra() {
     answer: "0",
     level: "fácil",
     attach: "",
+    category: "",
   };
 
   async function handleImage(event: React.ChangeEvent<HTMLInputElement>) {

@@ -15,6 +15,7 @@ export default function App({ Component, pageProps }: AppProps) {
     >
       <AuthProvider>
         <Navbar />
+
         <Component {...pageProps} className={`${inter.className}`} />
       </AuthProvider>
     </SWRConfig>

@@ -22,6 +22,7 @@ export default function CompletePalavra({
       await api.get(`/user/add-points/${id}`);
       setMessage("resposta certa! parabéns");
       setTimeout(() => {
+        setMessage("");
         setIndex((prev) => prev + 1);
       }, 1000);
     } catch (error) {
@@ -29,8 +30,9 @@ export default function CompletePalavra({
     }
   };
   useEffect(() => {
-    checkAnswer(question._id);
-    console.log(userAnswer);
+    if (userAnswer !== "") checkAnswer(question._id);
+    console.log("message", typeof message);
+    console.log("answer", typeof userAnswer);
   }, [userAnswer]);
   return (
     <>
@@ -47,18 +49,17 @@ export default function CompletePalavra({
         <h2>{question.questions}</h2>
       </div>
       <div id="options">
-        <select
-          onChange={(e) => {
-            setUserAnswer(e.target.value);
-          }}
-        >
-          <option selected hidden>
-            {" "}
-          </option>
-          {question.options.map((option, i) => (
-            <option key={i}>{option} </option>
-          ))}
-        </select>
+        {question.options.map((option, i) => (
+          <h1
+            key={i}
+            onClick={() => {
+              setUserAnswer(option);
+            }}
+          >
+            {option}
+          </h1>
+        ))}
+
         {message && <h2>{message}</h2>}
       </div>
     </>

@@ -12,7 +12,7 @@ export default function CliqueVideo({
   const [message, setMessage] = useState("");
   const checkAnswer = async (i: number, id: string | undefined) => {
     //checa se errou
-    console.log("hi?");
+
     if (i.toString() !== question.answer) {
       await api.get(`/user/remove-points/${id}`);
       setMessage("resposta errada");
@@ -44,7 +44,7 @@ export default function CliqueVideo({
               <div key={i} className="flex h-[40vh] w-[40vw] z-[2147483647]">
                 <input
                   type="radio"
-                  name={`option ${i}`}
+                  name="option"
                   value={`${i}`}
                   onClick={() => checkAnswer(i, question._id)}
                 />

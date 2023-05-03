@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
-import useSWR from "swr";
-import Question from "@/components/Question";
+
 import { useState } from "react";
 export default function SpecificQuestion() {
   const router = useRouter();

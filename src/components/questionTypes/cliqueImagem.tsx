@@ -1,5 +1,5 @@
 import api from "@/api/api";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ReactPlayer from "react-player";
 
 export default function CliqueImagem({

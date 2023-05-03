@@ -13,11 +13,13 @@ export default function App({ Component, pageProps }: AppProps) {
     <SWRConfig
       value={{ fetcher: (url: string) => api(url).then((res) => res.data) }}
     >
-      <AuthProvider>
-        <Navbar />
+      <ProtectRouteUser>
+        <AuthProvider>
+          <Navbar />
 
-        <Component {...pageProps} className={`${inter.className}`} />
-      </AuthProvider>
+          <Component {...pageProps} className={`${inter.className}`} />
+        </AuthProvider>
+      </ProtectRouteUser>
     </SWRConfig>
   );
 }

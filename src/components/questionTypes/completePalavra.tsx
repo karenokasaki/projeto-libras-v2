@@ -22,6 +22,7 @@ export default function CompletePalavra({
       await api.get(`/user/add-points/${id}`);
       setMessage("resposta certa! parabéns");
       setTimeout(() => {
+        setMessage("");
         setIndex((prev) => prev + 1);
       }, 1000);
     } catch (error) {

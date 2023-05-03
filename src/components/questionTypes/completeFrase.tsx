@@ -11,6 +11,8 @@ export default function CompleteFrase({
 }) {
   const [userAnswer, setUserAnswer] = useState("");
   const [message, setMessage] = useState("");
+  const [answered, setAnswered] = useState(false);
+
   const checkAnswer = async (id: string | undefined) => {
     //checa se errou
     if (userAnswer !== question.answer) {
@@ -21,18 +23,22 @@ export default function CompleteFrase({
 
     try {
       await api.get(`/user/add-points/${id}`);
+      setAnswered(true);
       setMessage("resposta certa! parabéns");
+      setUserAnswer("");
       setTimeout(() => {
         setIndex((prev) => prev + 1);
+        setAnswered(false);
+        setMessage("");
       }, 1000);
     } catch (error) {
       console.log(error);
     }
   };
-  useEffect(() => {
-    checkAnswer(question._id);
-    console.log(userAnswer);
-  }, [userAnswer]);
+  // useEffect(() => {
+  //   if (!answered) checkAnswer(question._id);
+  //   console.log(userAnswer);
+  // }, [userAnswer]);
   return (
     <>
       <div id="heading">
@@ -52,6 +58,7 @@ export default function CompleteFrase({
         <input
           type="text"
           name="answer"
+          value={userAnswer}
           onChange={(e) => setUserAnswer(e.target.value)}
         />
         <button onClick={() => checkAnswer(question._id)}> Acertei? </button>

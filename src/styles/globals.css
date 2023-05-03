@@ -10,7 +10,6 @@
 
 @layer components {
   body {
-    @apply bg-white;
+    @apply bg-white p-0 m-0;
   }
 }
-

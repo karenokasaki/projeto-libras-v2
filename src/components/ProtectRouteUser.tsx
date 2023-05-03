@@ -10,7 +10,7 @@ function ProtectRouteUser({ children }: { children: any }) {
     //redirect to login if not logged in
     // but not if on open routes
     if (!token && !allowedRoutes.includes(router.pathname)) {
-      router.push("/login");
+      router.push("/signup");
     }
   }, [router]);
 

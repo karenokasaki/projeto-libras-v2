@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
-import ReactPlayer from "react-player";
-import Image from "next/image";
+import { Suspense, useEffect, useState } from "react";
+
 import EscrevaPalavra from "./questionTypes/escrevaPalavra";
 import CliqueImagem from "./questionTypes/cliqueImagem";
 import CompletePalavra from "./questionTypes/completePalavra";
@@ -18,7 +17,11 @@ export default function Question({
 }) {
   const [questionType, setQuestionType] = useState<string>();
   useEffect(() => {
+    console.log("trocou a question");
     setQuestionType(question.type);
+    if (question.type === "monte a palavra")
+      question.options.sort((a, b) => 0.5 - Math.random());
+    console.log(question);
   }, [question]);
 
   return (

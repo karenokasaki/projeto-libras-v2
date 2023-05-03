@@ -39,7 +39,7 @@ function CliqueNaImagem() {
     answer: "0",
     level: "fácil",
     attach: "",
-    category: "",
+    category: "terrestre",
   };
 
   async function handleImage(event: React.ChangeEvent<HTMLInputElement>) {
@@ -254,6 +254,23 @@ function CliqueNaImagem() {
                 <option value="0">Opção 1</option>
                 <option value="1">Opção 2</option>
                 <option value="2">Opção 3</option>
+              </Field>
+            </div>
+            <div className="sm:col-span-6">
+              <label
+                htmlFor="category"
+                className="block text-sm font-medium leading-6 text-slate-900"
+              >
+                Categoria
+              </label>
+              <Field
+                as="select"
+                id="category"
+                name="category"
+                className="mt-2 block w-full rounded-md border-0 p-1.5 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
+              >
+                <option value="terrestre">Terrestre</option>
+                <option value="aereo-e-maritimo">Aereo e Marítimo</option>
               </Field>
             </div>
 

@@ -1,11 +1,9 @@
 import AuthContext from "@/context/authContext";
-import { useContext } from "react";
-
-
+import { useContext, useEffect } from "react";
+import useSWR from "swr";
 
 function ProfilePage() {
-  const { user } = useContext(AuthContext);
-
+  const { data: user, error } = useSWR<User>("/user/profile");
   return (
     <div>
       <h1>Profile</h1>

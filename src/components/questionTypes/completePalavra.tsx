@@ -43,6 +43,8 @@ export default function CompletePalavra({
           loop={true}
           controls={true}
           muted={true}
+          height={"40vh"}
+          width={"100vw"}
         />
       </div>
       <div id="question">

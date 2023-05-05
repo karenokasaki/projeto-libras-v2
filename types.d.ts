@@ -18,6 +18,7 @@ type User = {
   name: string;
   email: string;
   role: string;
+  points: number;
 };
 
 type AuthContextType = {

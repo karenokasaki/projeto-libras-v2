@@ -2,9 +2,9 @@ import Link from "next/link";
 
 export default function Questions() {
   const content = (
-    <section className="bg-white flex flex-col justify-center items-center">
+    <section className="bg-moonstone flex flex-col justify-center items-center">
       <div className="container px-6 py-10 mx-auto flex flex-col justify-center items-center">
-        <h1 className="text-3xl font-semibold text-gray-800 lg:text-7xl ">
+        <h1 className="text-7xl font-semibold text-gray-800 lg:text-8xl ">
           Categorias
         </h1>
 
@@ -12,7 +12,7 @@ export default function Questions() {
           <div className="lg:flex">
             <div className="flex flex-col py-6 lg:mx-6 items-center text-center">
               <Link
-                className="text-xl font-semibold text-gray-800 hover:text-gray-500 transition-all "
+                className="text-3xl font-semibold text-gray-800 hover:text-gray-500 transition-all  flex flex-col items-center"
                 href={`/quiz/terrestre`}
               >
                 Transportes terrestres
@@ -30,7 +30,7 @@ export default function Questions() {
             <div className="flex flex-col py-6 lg:mx-6 items-center text-center">
               <Link
                 href={`/quiz/aereo-e-maritimo`}
-                className="text-xl font-semibold text-gray-800 hover:text-gray-500 transition-all "
+                className="text-3xl font-semibold text-gray-800 hover:text-gray-500 transition-all flex flex-col items-center "
               >
                 Transportes marítimos e aéreos
                 <img

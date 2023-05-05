@@ -60,6 +60,8 @@ export default function MontePalavra({
             loop={true}
             controls={true}
             muted={true}
+            height={"40vh"}
+            width={"80vw"}
             url={question.heading}
           />
         </div>

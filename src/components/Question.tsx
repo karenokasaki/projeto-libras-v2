@@ -16,16 +16,24 @@ export default function Question({
   setIndex: React.Dispatch<React.SetStateAction<number>>;
 }) {
   const [questionType, setQuestionType] = useState<string>();
+
+  const randomizer = (options: Array<string>) => {
+    let randomized = options.sort((a, b) => 0.5 - Math.random());
+    console.log(randomized);
+    if (randomized.join("") === question.answer) {
+      randomizer(options);
+    }
+  };
   useEffect(() => {
     console.log("trocou a question");
     setQuestionType(question.type);
-    if (question.type === "monte a palavra")
-      question.options.sort((a, b) => 0.5 - Math.random());
+    if (question.type === "monte a palavra") randomizer(question.options);
+
     console.log(question);
   }, [question]);
 
   return (
-    <div className="flex flex-col justify-center items-center ">
+    <div className="flex flex-col justify-center items-center pt-40 bg-[#44B3E3] ">
       <h1>{questionType}</h1>
       {questionType === "escreva a palavra" && (
         <EscrevaPalavra question={question} setIndex={setIndex} />

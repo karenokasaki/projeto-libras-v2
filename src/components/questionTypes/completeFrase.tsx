@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import NextQuestion from "../NextQuestion";
 import ReactPlayer from "react-player";
 import api from "@/api/api";
 
@@ -41,28 +42,39 @@ export default function CompleteFrase({
   // }, [userAnswer]);
   return (
     <>
-      <div id="heading">
-        <ReactPlayer
-          url={question.heading}
-          playing={true}
-          loop={true}
-          controls={true}
-          muted={true}
-        />
-      </div>
-      <div id="question">
-        <h2>{question.questions}</h2>
-      </div>
-      <div id="options">
-        <label htmlFor="answer">Escreva a resposta</label>
-        <input
-          type="text"
-          name="answer"
-          value={userAnswer}
-          onChange={(e) => setUserAnswer(e.target.value)}
-        />
-        <button onClick={() => checkAnswer(question._id)}> Acertei? </button>
-      </div>
+      {!answered ? (
+        <>
+          <div id="heading">
+            <ReactPlayer
+              url={question.heading}
+              playing={true}
+              loop={true}
+              controls={true}
+              muted={true}
+              height={"40vh"}
+              width={"100vw"}
+            />
+          </div>
+          <div id="question">
+            <h2>{question.questions}</h2>
+          </div>
+          <div id="options">
+            <label htmlFor="answer">Escreva a resposta</label>
+            <input
+              type="text"
+              name="answer"
+              value={userAnswer}
+              onChange={(e) => setUserAnswer(e.target.value)}
+            />
+            <button onClick={() => checkAnswer(question._id)}>
+              {" "}
+              Acertei?{" "}
+            </button>
+          </div>
+        </>
+      ) : (
+        <NextQuestion setIndex={setIndex} setAnswered={setAnswered} />
+      )}
     </>
   );
 }

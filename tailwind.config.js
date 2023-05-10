@@ -6,7 +6,17 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    fontFamily: {
+      poppins: ["Poppins", "sans-serif"],
+    },
     extend: {
+      colors: {
+        lavender: "#9E7DCA",
+        moonstone: "#73A2AB",
+        blush: "#C66C7E",
+        onyx: "#393E41",
+        yellowg: "#9EC346",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

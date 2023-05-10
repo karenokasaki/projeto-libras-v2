@@ -1,6 +1,7 @@
 import ReactPlayer from "react-player";
 import { useEffect, useState } from "react";
 import api from "@/api/api";
+import NextQuestion from "../NextQuestion";
 export default function CompletePalavra({
   question,
   setIndex,
@@ -9,6 +10,7 @@ export default function CompletePalavra({
   setIndex: React.Dispatch<React.SetStateAction<number>>;
 }) {
   const [userAnswer, setUserAnswer] = useState("");
+  const [answered, setAnswered] = useState(false);
   const [message, setMessage] = useState("");
   const checkAnswer = async (id: string | undefined) => {
     //checa se errou
@@ -36,32 +38,40 @@ export default function CompletePalavra({
   }, [userAnswer]);
   return (
     <>
-      <div id="heading">
-        <ReactPlayer
-          url={question.heading}
-          playing={true}
-          loop={true}
-          controls={true}
-          muted={true}
-        />
-      </div>
-      <div id="question">
-        <h2>{question.questions}</h2>
-      </div>
-      <div id="options">
-        {question.options.map((option, i) => (
-          <h1
-            key={i}
-            onClick={() => {
-              setUserAnswer(option);
-            }}
-          >
-            {option}
-          </h1>
-        ))}
+      {!answered ? (
+        <>
+          <div id="heading">
+            <ReactPlayer
+              url={question.heading}
+              playing={true}
+              loop={true}
+              controls={true}
+              muted={true}
+              height={"40vh"}
+              width={"100vw"}
+            />
+          </div>
+          <div id="question">
+            <h2>{question.questions}</h2>
+          </div>
+          <div id="options">
+            {question.options.map((option, i) => (
+              <h1
+                key={i}
+                onClick={() => {
+                  setUserAnswer(option);
+                }}
+              >
+                {option}
+              </h1>
+            ))}
 
-        {message && <h2>{message}</h2>}
-      </div>
+            {message && <h2>{message}</h2>}
+          </div>
+        </>
+      ) : (
+        <NextQuestion setIndex={setIndex} setAnswered={setAnswered} />
+      )}
     </>
   );
 }

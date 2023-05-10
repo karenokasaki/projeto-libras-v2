@@ -1,6 +1,7 @@
 import api from "@/api/api";
 import { useState } from "react";
 import ReactPlayer from "react-player";
+import NextQuestion from "../NextQuestion";
 
 export default function CliqueImagem({
   question,
@@ -22,11 +23,11 @@ export default function CliqueImagem({
       setAnswered(true);
       await api.get(`/user/add-points/${id}`);
       setMessage("resposta certa! parabéns");
-      setTimeout(() => {
-        setIndex((prev) => prev + 1);
-        setAnswered(!answered);
-        setMessage("");
-      }, 1000);
+      // setTimeout(() => {
+      //   setIndex((prev) => prev + 1);
+      //   setAnswered(!answered);
+      //   setMessage("");
+      // }, 1000);
     } catch (error) {
       console.log(error);
     }
@@ -34,36 +35,41 @@ export default function CliqueImagem({
 
   return (
     <main className="flex justify-center items-center flex-col mt-8">
-      <div id="heading" className="mb-6 w-[80vw] h-[40vh]">
-        <ReactPlayer
-          url={question.heading}
-          playing={true}
-          loop={true}
-          muted={true}
-          height={"40vh"}
-          width={"80vw"}
-        />
-      </div>
-      <div id="question" className="mb-6">
-        <h2>{question.questions}</h2>
-      </div>
-      <div className="flex flex-row  h-[30vh] gap-10">
-        {question.options.map((option, i) => {
-          return (
-            <img
-              key={i}
-              src={option}
-              alt={`opção ${i}`}
-              className="w-[25vw] h-[20vh] object-contain"
-              onClick={(e) => {
-                checkAnswer(i, question._id);
-              }}
+      {!answered ? (
+        <>
+          <div id="heading" className="mb-6 w-[80vw] h-[40vh]">
+            <ReactPlayer
+              url={question.heading}
+              playing={true}
+              loop={true}
+              muted={true}
+              height={"40vh"}
+              width={"80vw"}
             />
-          );
-        })}
-      </div>
-
-      {message && <p>{message}</p>}
+          </div>
+          <div id="question" className="mb-6">
+            <h2>{question.questions}</h2>
+          </div>
+          <div className="flex flex-row  h-[30vh] gap-10">
+            {question.options.map((option, i) => {
+              return (
+                <img
+                  key={i}
+                  src={option}
+                  alt={`opção ${i}`}
+                  className="w-[25vw] h-[20vh] object-contain"
+                  onClick={(e) => {
+                    checkAnswer(i, question._id);
+                  }}
+                />
+              );
+            })}
+          </div>
+          {message && <p>{message}</p>}
+        </>
+      ) : (
+        <NextQuestion setIndex={setIndex} setAnswered={setAnswered} />
+      )}
     </main>
   );
 }

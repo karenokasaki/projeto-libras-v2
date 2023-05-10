@@ -24,52 +24,66 @@ function Navbar() {
   console.log(currentUser);
   return (
     <>
-      <nav className="hidden justify-evenly items-center   lg:flex  bg-yellowg h-[13.5vh]  ">
+      <nav className="hidden text-2xl justify-center gap-20 items-center shadow-sm shadow-[#44B3E3] fixed lg:flex text-slate-200 bg-[#81B2D9] h-[13.5vh]  w-[100vw]">
         <Link
           href="/"
-          className="flex flex-row hover:text-gray-600 items-center"
+          className="flex flex-row hover:text-white items-center transition-all duration-200 gap-4"
         >
+          página inicial
           <Image
-            src="/assets/images/librasblush.png"
+            src="/assets/images/home.png"
             alt="logo libras"
-            height={60}
-            width={60}
+            height={40}
+            width={40}
+            className="mb-4"
           />
-          Página inicial
         </Link>
 
         {!token && (
           <>
-            <Link href="/signup" className="hover:text-gray-600">
-              Cadastrar
+            <Link
+              href="/signup"
+              className="hover:text-white transition-all duration-200 "
+            >
+              cadastrar
             </Link>
-            <Link href="/login" className="hover:text-gray-600">
-              Entrar
+            <Link
+              href="/login"
+              className="hover:text-white transition-all duration-200"
+            >
+              entrar
             </Link>
           </>
         )}
         {token && (
-          <div className="flex flex-row items-center gap-12">
-            <div className="flex items-center">
-              <Link href="/quiz" className="hover:text-gray-600">
-                Perguntas
-              </Link>
-            </div>
-            <div className="bottom-0 h-[13.5vh] flex flex-col-reverse">
-              <Link href="/profile" className="">
-                <Image
-                  src="/assets/images/todds-profile.png"
-                  alt="user icon"
-                  width={80}
-                  height={80}
-                  className=""
+          <div className="flex flex-row items-center gap-20 justify-center">
+            <div className="flex items-center ">
+              <Link
+                href="/quiz"
+                className="hover:text-white transition-all duration-200 flex flex-row  items-center gap-2"
+              >
+                perguntas
+                <img
+                  className="h-10"
+                  src="/assets/images/question-mark.png"
+                  alt="question"
                 />
               </Link>
             </div>
-            <span className="text-sm">
-              Seus pontos:{" "}
+            <div className=" ">
+              <Link
+                href="/profile"
+                className="flex  hover:text-white transition-all duration-200 items-center gap-2"
+              >
+                perfil
+                <img src="/assets/images/user.png" alt="" className="h-10" />
+              </Link>
+            </div>
+            <span className=" flex items-center gap-2 ">
+              pontos:{" "}
               <span className="font-semibold">
-                {currentUser && currentUser.points > 0 && currentUser.points} ⭐
+                {currentUser && currentUser.points > 0 && currentUser.points}
+                <img src="/assets/images/star.png" alt="" className="h-8" />
               </span>
             </span>
           </div>
@@ -104,7 +118,7 @@ function Navbar() {
                   href="/"
                   className="flex flex-row hover:text-gray-400 text-center items-center justify-center"
                 >
-                  Página inicial
+                  página inicial
                   <Image
                     src="/assets/images/librasblush.png"
                     alt="logo libras"
@@ -115,13 +129,13 @@ function Navbar() {
                 {token ? (
                   <>
                     <Link href="/quiz" className="hover:text-gray-600">
-                      Perguntas
+                      perguntas
                     </Link>
                     <Link
                       href="/profile"
                       className="flex  gap-1 hover:text-gray-600 items-center"
                     >
-                      Sua conta
+                      sua conta
                       <Image
                         src="/assets/images/todds-profile.png"
                         alt="user icon"
@@ -134,10 +148,10 @@ function Navbar() {
                 ) : (
                   <>
                     <Link href="/signup" className="hover:text-gray-600">
-                      Cadastrar
+                      cadastrar
                     </Link>
                     <Link href="/login" className="hover:text-gray-600">
-                      Entrar
+                      entrar
                     </Link>
                   </>
                 )}

@@ -7,7 +7,8 @@ export default function CategoryPage() {
   const router = useRouter();
   const { category } = router.query;
   const { data: questions, error } = useSWR<Question[]>(
-    `/question/get-by-category/${category}`
+    `/question/get-by-category/${category}`,
+    { suspense: true }
   );
 
   const [index, setIndex] = useState<number>(0);
@@ -22,7 +23,7 @@ export default function CategoryPage() {
   return (
     <>
       {!start && question && (
-        <div className="flex justify-center items-center flex-col font-poppins">
+        <div className="flex justify-center items-center flex-col font-poppins h-[100vh] bg-[#44B3E3]">
           <h1>Bem vindo à categoria: {category}</h1>
           <p>Vamos começar?</p>
 
@@ -34,7 +35,7 @@ export default function CategoryPage() {
         start &&
         setIndex && <Question question={question} setIndex={setIndex} />
       ) : (
-        <div>
+        <div className="pt-58">
           <h1>terminou</h1>
           <Link href="/quiz">Voltar para as perguntas</Link>
         </div>

@@ -5,7 +5,9 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 function ProfilePage() {
   const { token, setToken, setUser } = useContext(AuthContext);
-  const { data: user, error } = useSWR<User>("/user/profile");
+  const { data: user, error } = useSWR<User>("/user/profile", {
+    revalidateOnReconnect: true,
+  });
   const router = useRouter();
   function logOff() {
     localStorage.removeItem("loggedInUser");
@@ -14,13 +16,13 @@ function ProfilePage() {
     router.push("/");
   }
   return (
-    <div className="h-[100vh] bg-moonstone">
-      <h1 className=" text-center mt-28 mb-14 text-5xl">Seu perfil</h1>
+    <div className="h-[100vh] bg-[#44B3E3]">
+      <h1 className=" text-center pt-56 mb-14 text-5xl">Seu perfil</h1>
 
       <div className="  flex justify-center items-center ">
         {user && (
           <div className="flex gap-12">
-            <div className="flex flex-col border-2 rounded-lg border-[#6699A3] items-center justify-center w-[30vw] h-[50vh]">
+            <div className="flex flex-col border-2 rounded-lg border-moonstone items-center justify-center w-[30vw] h-[50vh]">
               <Image
                 src="/assets/images/profile.png"
                 alt="user icon"
@@ -36,7 +38,7 @@ function ProfilePage() {
                 Sair da sua conta
               </button>
             </div>
-            <div className="flex flex-col border-2 rounded-lg border-[#6699A3] items-center justify-center w-[30vw]">
+            <div className="flex flex-col border-2 rounded-lg border-moonstone items-center justify-center w-[30vw]">
               <h1>Seus pontos:</h1>
               <p className="font-bold">{user.points} ⭐</p>
             </div>

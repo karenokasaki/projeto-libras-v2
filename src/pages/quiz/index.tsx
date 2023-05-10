@@ -2,44 +2,44 @@ import Link from "next/link";
 
 export default function Questions() {
   const content = (
-    <section className="bg-moonstone flex flex-col justify-center items-center">
-      <div className="container px-6 py-10 mx-auto flex flex-col justify-center items-center">
-        <h1 className="text-7xl font-semibold text-gray-800 lg:text-8xl ">
-          Categorias
+    <section className="bg-[#E4CFB4]  pt-48 flex flex-col items-center h-auto lg:h-[100vh]  ">
+      <div className="">
+        <h1 className="text-7xl font-semibold text-gray-800 lg:text-6xl mb-20">
+          categorias
         </h1>
-
-        <div className="grid grid-cols-1 gap-8 mt-8 md:mt-16 items-center">
-          <div className="lg:flex">
-            <div className="flex flex-col py-6 lg:mx-6 items-center text-center">
-              <Link
-                className="text-3xl font-semibold text-gray-800 hover:text-gray-500 transition-all  flex flex-col items-center"
-                href={`/quiz/terrestre`}
-              >
-                Transportes terrestres
-                <img
-                  className="object-contain w-full h-56 rounded-lg lg:w-64"
-                  src="/assets/images/meios-de-transporte.png"
-                  alt="transporte"
-                />
-              </Link>
+      </div>
+      <div className="ml-10 flex flex-row gap-60 flex-wrap h-auto ">
+        <div className="rounded-full">
+          <Link
+            className="text-3xl font-semibold text-gray-800 hover:text-gray-500 transition-all duration-200 flex flex-col items-center "
+            href={`/quiz/terrestre`}
+          >
+            <div className="bg-[#81B2D9] rounded-2xl h-80 mb-10 pr-3 w-80 flex items-center justify-center">
+              <img
+                className="h-48 "
+                src="/assets/images/bicicleta.png"
+                alt="transporte"
+              />
             </div>
-          </div>
+            transportes terrestres
+          </Link>
         </div>
-        <div className="grid grid-cols-1 gap-8 mt-8 md:mt-16 ">
-          <div className="lg:flex">
-            <div className="flex flex-col py-6 lg:mx-6 items-center text-center">
-              <Link
-                href={`/quiz/aereo-e-maritimo`}
-                className="text-3xl font-semibold text-gray-800 hover:text-gray-500 transition-all flex flex-col items-center "
-              >
-                Transportes marítimos e aéreos
+
+        <div className="">
+          <div className="flex ">
+            <Link
+              href={`/quiz/aereo-e-maritimo`}
+              className="text-3xl font-semibold text-gray-800 hover:text-gray-500 transition-all duration-200 flex flex-col items-center"
+            >
+              <div className="bg-[#81B2D9] rounded-2xl mb-10 w-80 h-80 flex items-center justify-center">
                 <img
-                  className="object-contain w-full h-56 rounded-lg lg:w-64"
+                  className="h-40  "
                   src="/assets/images/barco-aviao.png"
                   alt="transporte"
                 />
-              </Link>
-            </div>
+              </div>
+              transportes marítimos e aéreos
+            </Link>
           </div>
         </div>
       </div>

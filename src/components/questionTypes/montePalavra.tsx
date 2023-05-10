@@ -1,7 +1,8 @@
 import ReactPlayer from "react-player";
 import { useEffect, useState, Suspense, useRef } from "react";
 import api from "@/api/api";
-import { useRouter } from "next/router";
+
+import NextQuestion from "../NextQuestion";
 
 export default function MontePalavra({
   question,
@@ -12,8 +13,9 @@ export default function MontePalavra({
 }) {
   const [message, setMessage] = useState("");
   const [userAnswer, setUserAnswer] = useState("");
-  const checkboxRefs = useRef<NodeListOf<HTMLInputElement> | null[]>([]);
   const [reload, setReload] = useState(false);
+  const [answered, setAnswered] = useState(false);
+  const checkboxRefs = useRef<NodeListOf<HTMLInputElement> | null[]>([]);
 
   const checkAnswer = async () => {
     if (
@@ -36,13 +38,10 @@ export default function MontePalavra({
           if (curr) curr.checked = false;
         });
         setUserAnswer("");
-        setTimeout(() => {
-          setIndex((prev) => prev + 1);
-          setMessage("");
-        }, 1000);
-        setTimeout(() => {
-          setReload(!reload);
-        }, 1010);
+        setAnswered(true);
+        // setTimeout(() => {
+        //   setReload(!reload);
+        // }, 1010);
       } catch (error) {
         console.log(error);
       }
@@ -53,43 +52,47 @@ export default function MontePalavra({
 
   return (
     <>
-      <Suspense fallback={<h1>loading</h1>}>
-        <div id="heading">
-          <ReactPlayer
-            playing={true}
-            loop={true}
-            controls={true}
-            muted={true}
-            height={"40vh"}
-            width={"80vw"}
-            url={question.heading}
-          />
-        </div>
-        <div id="question">
-          <h2>{question.questions}</h2>
-        </div>
-        <div id="options">
-          {question.options.map((option, i) => (
-            <label key={i}>
-              {option}
-              <input
-                type="checkbox"
-                value={`${option}`}
-                ref={(el) => (checkboxRefs.current[i] = el)}
-                onChange={(e) => {
-                  if (e.target.checked) {
-                    setUserAnswer((prev) => (prev += option));
-                  } else {
-                    setUserAnswer((prev) => prev.replace(option, ""));
-                  }
-                }}
-              />
-            </label>
-          ))}
-        </div>
-        <h1>{userAnswer}</h1>
-        {message && <h2>{message}</h2>}
-      </Suspense>
+      {!answered ? (
+        <>
+          <div id="heading">
+            <ReactPlayer
+              playing={true}
+              loop={true}
+              controls={true}
+              muted={true}
+              height={"40vh"}
+              width={"80vw"}
+              url={question.heading}
+            />
+          </div>
+          <div id="question">
+            <h2>{question.questions}</h2>
+          </div>
+          <div id="options">
+            {question.options.map((option, i) => (
+              <label key={i}>
+                {option}
+                <input
+                  type="checkbox"
+                  value={`${option}`}
+                  ref={(el) => (checkboxRefs.current[i] = el)}
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      setUserAnswer((prev) => (prev += option));
+                    } else {
+                      setUserAnswer((prev) => prev.replace(option, ""));
+                    }
+                  }}
+                />
+              </label>
+            ))}
+          </div>
+          <h1>{userAnswer}</h1>
+          {message && <h2>{message}</h2>}
+        </>
+      ) : (
+        <NextQuestion setIndex={setIndex} setAnswered={setAnswered} />
+      )}
     </>
   );
 }

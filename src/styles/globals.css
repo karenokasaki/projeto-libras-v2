@@ -9,7 +9,10 @@
 }
 
 @layer components {
-  body {
-    @apply bg-moonstone p-0 m-0 font-poppins text-onyx text-2xl;
+  * {
+    @apply font-poppins;
+  }
+  body > body:not(nav) {
+    @apply bg-white  p-0 text-onyx text-2xl;
   }
 }

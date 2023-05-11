@@ -13,6 +13,8 @@ export default function Document() {
         />
       </Head>
       <body className="">
+        {/* puglin libras */}
+
         <div className="h-auto">
           <Main />
         </div>

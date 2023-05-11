@@ -79,10 +79,21 @@ export default function Footer() {
           ))}
         </div>
         <div className="mt-8 md:order-1 md:mt-0">
-          <p className="text-center text-xs leading-5 ">
-            &copy; 2022 Daniel kazovinskyets | Karen Okasaki, Inc. All rights
-            reserved.
-          </p>
+          &copy;{" "}
+          <a
+            className="text-center text-xs leading-5"
+            href="https://www.linkedin.com/in/daniel-skonetzky-6a51b7206/"
+          >
+            Daniel skonetzky{" "}
+          </a>
+          {" | "}
+          <a
+            className="text-center text-xs leading-5"
+            href="https://www.linkedin.com/in/karen-okasaki/"
+          >
+            Karen Okasaki{" "}
+          </a>
+          All rights reserved.
         </div>
       </div>
     </footer>

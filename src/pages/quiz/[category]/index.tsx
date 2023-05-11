@@ -43,6 +43,7 @@ export default function CategoryPage() {
             <Link href="/quiz">Voltar para as perguntas</Link>
           </div>
         )}
+        {error && <p>{error}</p>}
       </div>
     )
   );

@@ -65,7 +65,7 @@ export default function MontePalavra({
               url={question.heading}
             />
           </div>
-          <div id="question">
+          <div id="question text-2xl text-center">
             <h2>{question.questions}</h2>
           </div>
           <div id="options">

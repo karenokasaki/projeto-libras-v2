@@ -31,8 +31,7 @@ export default function Question({
   }, [question]);
 
   return (
-    <div className="flex flex-col justify-center items-center pt-40 bg-[#44B3E3] ">
-      <h1>{questionType}</h1>
+    <div className="flex flex-col justify-center items-center  lg:pt-28 ">
       {questionType === "escreva a palavra" && (
         <EscrevaPalavra question={question} setIndex={setIndex} />
       )}

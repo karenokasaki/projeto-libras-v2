@@ -16,17 +16,15 @@ export default function CompletePalavra({
     //checa se errou
     if (question.options.indexOf(userAnswer).toString() !== question.answer) {
       await api.get(`/user/remove-points/${id}`);
-      setMessage("resposta errada");
+      setMessage("Resposta errada 😖");
       return;
     }
 
     try {
       await api.get(`/user/add-points/${id}`);
-      setMessage("resposta certa! parabéns");
-      setTimeout(() => {
-        setAnswered(true);
-        setUserAnswer("");
-      }, 1000);
+      setMessage("");
+      setUserAnswer("");
+      setAnswered(true);
     } catch (error) {
       console.log(error);
     }
@@ -49,23 +47,33 @@ export default function CompletePalavra({
               width={"100vw"}
             />
           </div>
-          <div id="question">
-            <h2>{question.questions}</h2>
+          <div
+            id="question"
+            className="text-center my-4 px-2 text-2xl flex self-center justify-center font-bold "
+          >
+            <p>{question.questions}</p>
           </div>
-          <div id="options">
+          <div
+            id="options"
+            className="flex flex-col gap-7 py-4 lg:flex-row lg:gap-16 lg:py-10"
+          >
             {question.options.map((option, i) => (
-              <h1
+              <div
                 key={i}
                 onClick={() => {
                   setUserAnswer(option);
                 }}
+                className=" bg-[#4c96d3] hover:text-white shadow-md transition-all font-semibold rounded-xl p-6 text-slate-200 text-center text-3xl tracking-[0.2em] "
               >
                 {option}
-              </h1>
+              </div>
             ))}
-
-            {message && <h2>{message}</h2>}
           </div>
+          {message && (
+            <p className="bg-[#FFD966] p-4 rounded-xl text-slate-700 font-semibold text-xl shadow-lg tracking-wide mt-4">
+              {message}
+            </p>
+          )}
         </>
       ) : (
         <NextQuestion setIndex={setIndex} setAnswered={setAnswered} />

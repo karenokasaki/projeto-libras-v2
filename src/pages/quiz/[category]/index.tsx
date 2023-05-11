@@ -5,7 +5,6 @@ import useSWR, { preload } from "swr";
 import Link from "next/link";
 
 export default function CategoryPage() {
-  preload("/question/get-all", useSWR);
   const router = useRouter();
   const { category } = router.query;
   const { data: questions, error } = useSWR<Question[]>(

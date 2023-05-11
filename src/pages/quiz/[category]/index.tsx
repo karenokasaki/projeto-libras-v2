@@ -21,6 +21,9 @@ export default function CategoryPage() {
     setLoading(false);
   }, [index, questions]);
 
+  console.log(questions);
+  console.log(error);
+
   return (
     !loading && (
       <div className="flex bg-[#E4CFB4] justify-center items-center flex-col font-poppins min-h-[100vh] ">

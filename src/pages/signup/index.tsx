@@ -3,13 +3,21 @@ import { Formik, FormikHelpers, Form, Field } from "formik";
 import { useRouter } from "next/router";
 
 function SignUpPage() {
-  const initialValues: SignupForm = { name: "", password: "", email: "" };
+  const initialValues: SignupForm = {
+    name: "",
+    password: "",
+    email: "",
+    surdo: false,
+    age: "",
+    city: "",
+  };
   const router = useRouter();
   const onSubmit = async (
     values: SignupForm,
     actions: FormikHelpers<SignupForm>
   ) => {
     try {
+      console.log(values);
       await api.post("/user/signup", values);
       router.push("/login");
     } catch (error) {
@@ -38,6 +46,12 @@ function SignUpPage() {
               }
               if (!values.email) {
                 errors.email = "Required";
+              }
+              if (!values.age) {
+                errors.age = "Required";
+              }
+              if (!values.city) {
+                errors.city = "Required";
               }
               return errors;
             }}
@@ -76,6 +90,65 @@ function SignUpPage() {
                     className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     required
                   />
+                </div>
+              </div>
+
+              <div className="mt-2">
+                <label
+                  htmlFor="age"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Idade
+                </label>
+                <div className="mt-2">
+                  <Field
+                    id="age"
+                    type="number"
+                    name="age"
+                    placeholder="Idade"
+                    className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="mt-2">
+                <label
+                  htmlFor="city"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Cidade
+                </label>
+                <div className="mt-2">
+                  <Field
+                    id="city"
+                    type="city"
+                    name="city"
+                    placeholder="Cidade"
+                    className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    required
+                  />
+                </div>
+              </div>
+              <div className="mt-2">
+                <label
+                  htmlFor="surdo"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Você é:
+                </label>
+                <div className="mt-2">
+                  <Field
+                    id="surdo"
+                    type="surdo"
+                    name="surdo"
+                    as="select"
+                    className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    required
+                  >
+                    <option value="true">Surdo</option>
+                    <option value="false">Ouvinte</option>
+                  </Field>
                 </div>
               </div>
 

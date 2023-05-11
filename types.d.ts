@@ -2,6 +2,9 @@ type SignupForm = {
   name: string;
   password: string;
   email: string;
+  surdo: Boolean;
+  city: String;
+  age: String;
 };
 
 type LoginForm = {

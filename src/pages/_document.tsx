@@ -12,8 +12,10 @@ export default function Document() {
           rel="stylesheet"
         />
       </Head>
-      <body className="h-full">
-        <Main />
+      <body className="">
+        <div className="h-auto">
+          <Main />
+        </div>
         <NextScript />
         <Footer />
       </body>

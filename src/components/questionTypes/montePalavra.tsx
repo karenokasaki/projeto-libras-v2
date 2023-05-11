@@ -23,7 +23,7 @@ export default function MontePalavra({
       userAnswer !== question.answer
     ) {
       await api.get(`/user/remove-points/${question._id}`);
-      setMessage("resposta errada");
+      setMessage("Resposta errada 😖");
       return;
     }
 
@@ -33,21 +33,19 @@ export default function MontePalavra({
     )
       try {
         await api.get(`/user/add-points/${question._id}`);
-        setMessage("resposta certa! parabéns");
+
         checkboxRefs.current.forEach((curr) => {
           if (curr) curr.checked = false;
         });
         setUserAnswer("");
+        setMessage("");
         setAnswered(true);
-        // setTimeout(() => {
-        //   setReload(!reload);
-        // }, 1010);
       } catch (error) {
         console.log(error);
       }
   };
   useEffect(() => {
-    checkAnswer();
+    if (userAnswer.length === question.answer.length) checkAnswer();
   }, [userAnswer]);
 
   return (
@@ -61,19 +59,30 @@ export default function MontePalavra({
               controls={true}
               muted={true}
               height={"40vh"}
-              width={"80vw"}
+              width={"100vw"}
               url={question.heading}
             />
           </div>
-          <div id="question">
-            <h2>{question.questions}</h2>
+          <div
+            id="question text-2xl text-center"
+            className="text-center my-4 px-2 text-2xl flex self-center justify-center font-bold "
+          >
+            <p>{question.questions}</p>
           </div>
-          <div id="options">
+          <img src={question.attach} alt="" className="h-24" />
+          <p className="font-semibold text-2xl tracking-widest ">
+            {userAnswer}
+          </p>
+          <div id="options" className="flex gap-6 mb-4">
             {question.options.map((option, i) => (
-              <label key={i}>
-                {option}
+              <div
+                key={i}
+                className="flex flex-col items-center font-semibold text-2xl"
+              >
+                <label>{option.toUpperCase()}</label>
                 <input
                   type="checkbox"
+                  className="h-6 w-6 border-gray-300 text-indigo-600 focus:ring-indigo-600"
                   value={`${option}`}
                   ref={(el) => (checkboxRefs.current[i] = el)}
                   onChange={(e) => {
@@ -84,11 +93,14 @@ export default function MontePalavra({
                     }
                   }}
                 />
-              </label>
+              </div>
             ))}
           </div>
-          <h1>{userAnswer}</h1>
-          {message && <h2>{message}</h2>}
+          {message && (
+            <p className="bg-[#FFD966] p-4 rounded-xl text-slate-700 font-semibold text-xl shadow-lg tracking-wide mb-4">
+              {message}
+            </p>
+          )}
         </>
       ) : (
         <NextQuestion setIndex={setIndex} setAnswered={setAnswered} />

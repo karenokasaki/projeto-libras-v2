@@ -7,7 +7,7 @@ export default function NextQuestion({
 }) {
   return (
     <div>
-      <h1>NextQuestion</h1>
+      <h1>Você acertou!!!</h1>
 
       <button
         onClick={() => {
@@ -15,7 +15,7 @@ export default function NextQuestion({
           setAnswered(false);
         }}
       >
-        next question
+        Próxima pergunta
       </button>
     </div>
   );

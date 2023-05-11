@@ -97,12 +97,12 @@ function Navbar() {
           width={30}
           height={30}
           onClick={toggleMenu}
-          className="bg-yellowg border-2 rounded-full m-5 w-11"
+          className="bg-[#81B2D9] border-2 rounded-full m-5 w-11"
         />
         {toggle && (
           <div
             onClick={toggleMenu}
-            className="transition-all origin-left animate-openmenu h-screen w-[100vw] bg-yellowg to-blue-200 fixed top-0 left-0 opacity-97 flex flex-col"
+            className="transition-all origin-left animate-openmenu h-screen w-[100vw] bg-[#81B2D9] to-blue-200 fixed top-0 left-0 opacity-97 flex flex-col"
           >
             <Image
               src="/assets/images/menu-alt-05-svgrepo-com.png"

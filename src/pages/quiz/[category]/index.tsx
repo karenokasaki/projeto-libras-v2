@@ -23,13 +23,18 @@ export default function CategoryPage() {
 
   return (
     !loading && (
-      <div className="flex justify-center items-center flex-col font-poppins h-[100vh] bg-[#44B3E3]">
+      <div className="flex bg-[#E4CFB4] justify-center items-center flex-col font-poppins h-[100vh] ">
         {!start && question && (
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center bg-[#81B2D9] rounded-2xl shadow-md text-xl text-center  text-slate-200 p-4 lg:p-20 lg:text-3xl">
             <h1>Bem vindo à categoria: {category}</h1>
             <p>Vamos começar?</p>
 
-            <button onClick={() => setStart(true)}>vamos!</button>
+            <button
+              onClick={() => setStart(true)}
+              className="mt-10 bg-[#4c96d3] hover:text-white shadow-md transition-all  rounded-xl p-6"
+            >
+              VAMOS!
+            </button>
           </div>
         )}
 

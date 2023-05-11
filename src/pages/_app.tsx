@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <AuthProvider>
           <Navbar />
 
-          <Component {...pageProps} />
+          <Component {...pageProps} className="" />
         </AuthProvider>
       </ProtectRouteUser>
     </SWRConfig>

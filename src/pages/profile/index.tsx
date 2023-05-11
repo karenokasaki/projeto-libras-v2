@@ -16,15 +16,15 @@ function ProfilePage() {
     router.push("/");
   }
   return (
-    <div className=" min-h-[82vh] bg-[#44B3E3]">
-      <h1 className=" text-center pt-10 mb-14 text-5xl sm:pt-24 sm:mb-3 sm:text-xl">
-        Seu perfil
-      </h1>
-
+    <div className=" min-h-[100vh] bg-[#E4CFB4] pt-52">
       <div className="flex justify-center items-center">
         {user && (
-          <div className="flex gap-12 flex-wrap">
-            <div className="flex flex-col border-2 rounded-lg border-moonstone items-center justify-center w-[30vw] h-[50vh]">
+          <div className="flex gap-12 flex-col lg:flex-row ">
+            <div className="flex  bg-[#81B2D9] rounded-2xl flex-col border items-center justify-center w-[65vw] h-40 lg:w-[30vw] lg:h-auto lg:text-4xl ">
+              <h1>Seus pontos:</h1>
+              <p className="font-bold">{user.points} ⭐</p>
+            </div>
+            <div className="flex flex-col bg-[#81B2D9] rounded-2xl items-center justify-center w-[65vw] h-auto lg:w-[30vw]">
               <Image
                 src="/assets/images/profile.png"
                 alt="user icon"
@@ -39,10 +39,6 @@ function ProfilePage() {
               >
                 Sair da sua conta
               </button>
-            </div>
-            <div className="flex flex-col border-2 rounded-lg border-moonstone items-center justify-center w-[30vw]">
-              <h1>Seus pontos:</h1>
-              <p className="font-bold">{user.points} ⭐</p>
             </div>
           </div>
         )}

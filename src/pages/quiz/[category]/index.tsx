@@ -20,7 +20,7 @@ export default function CategoryPage() {
     questions && setQuestion(questions[index]);
     console.log(questions);
   }, [index, questions]);
-
+  console.log(error);
   return (
     <div className="flex justify-center items-center flex-col font-poppins h-[100vh] bg-[#44B3E3]">
       {!start && question && (

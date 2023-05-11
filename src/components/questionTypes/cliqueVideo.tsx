@@ -49,9 +49,20 @@ export default function CliqueVideo({
           >
             <h1> {question.questions}</h1>{" "}
             {message && (
-              <p className="bg-[#FFD966] p-4 rounded-xl text-slate-700 font-semibold text-xl shadow-lg tracking-wide mt-4">
-                {message}
-              </p>
+              <>
+                <ReactPlayer
+                  url={"https://youtu.be/PyX23XF2CT4"}
+                  playing={true}
+                  loop={true}
+                  controls={true}
+                  muted={true}
+                  height={"auto"}
+                  width={"auto"}
+                />
+                <p className="bg-[#FFD966] p-4 mb-4 mt-2 rounded-xl text-slate-700 font-semibold text-xl shadow-lg tracking-wide">
+                  {message}
+                </p>
+              </>
             )}
           </div>
           <div

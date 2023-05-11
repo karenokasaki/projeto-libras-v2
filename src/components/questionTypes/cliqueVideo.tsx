@@ -18,6 +18,9 @@ export default function CliqueVideo({
     if (i.toString() !== question.answer) {
       await api.get(`/user/remove-points/${id}`);
       setMessage(" Resposta errada 😖");
+      setTimeout(() => {
+        setMessage("");
+      }, 1000);
       return;
     }
 
@@ -34,24 +37,33 @@ export default function CliqueVideo({
       {!answered ? (
         <div className="flex flex-col items-center">
           <div id="heading">
-            <img src={question.heading} alt="cabeçalho" className="h-60 " />
+            <img
+              src={question.heading}
+              alt="cabeçalho"
+              className="h-32 lg:h-44 "
+            />
           </div>
           <div
             id="question"
-            className="my-4 px-2 text-2xl text-center flex self-center justify-center font-bold "
+            className="my-4 px-2 text-2xl text-center flex flex-col self-center justify-center font-bold "
           >
-            <h1> {question.questions}</h1>
+            <h1> {question.questions}</h1>{" "}
+            {message && (
+              <p className="bg-[#FFD966] p-4 rounded-xl text-slate-700 font-semibold text-xl shadow-lg tracking-wide mt-4">
+                {message}
+              </p>
+            )}
           </div>
           <div
             id="options"
-            className="flex flex-col gap-4 lg:flex-row lg:flex-wrap lg:justify-center  "
+            className="flex flex-col gap-4 lg:flex-row lg:flex-wrap lg:justify-center pb-4 lg:gap-0  "
           >
             {question.options.map((option, i) => {
               if (option.length)
                 return (
                   <div
                     key={i}
-                    className="flex flex-row-reverse items-center gap-4 lg:gap-2 lg:h-52 lg:w-[45vw] justify-center "
+                    className="flex px-2  flex-row-reverse items-center gap-4 lg:gap-2 lg:h-40 lg:w-[45vw] justify-center "
                   >
                     <ReactPlayer
                       url={option}
@@ -72,11 +84,6 @@ export default function CliqueVideo({
                 );
             })}
           </div>
-          {message && (
-            <p className="bg-[#FFD966] p-4 rounded-xl text-slate-700 font-semibold text-xl shadow-lg tracking-wide mt-4">
-              {message}
-            </p>
-          )}
         </div>
       ) : (
         <NextQuestion setIndex={setIndex} setAnswered={setAnswered} />

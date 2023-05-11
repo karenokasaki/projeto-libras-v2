@@ -23,7 +23,7 @@ export default function CategoryPage() {
 
   return (
     !loading && (
-      <div className="flex bg-[#E4CFB4] justify-center items-center flex-col font-poppins h-[100vh] ">
+      <div className="flex bg-[#E4CFB4] justify-center items-center flex-col font-poppins min-h-[100vh] ">
         {!start && question && (
           <div className="flex flex-col items-center bg-[#81B2D9] rounded-2xl shadow-md text-xl text-center  text-slate-200 p-4 lg:p-20 lg:text-3xl">
             <h1>Bem vindo à categoria: {category}</h1>

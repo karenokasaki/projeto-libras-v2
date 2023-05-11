@@ -18,7 +18,8 @@ export default function Question({
   const [questionType, setQuestionType] = useState<string>();
 
   const randomizer = (options: Array<string>) => {
-    let randomized = [...options].sort(() => 0.5 - Math.random());
+    let randomized = options.sort(() => 0.5 - Math.random());
+    console.log("randomizer", randomized);
 
     if (randomized.join("") === question.answer) {
       randomizer(options);

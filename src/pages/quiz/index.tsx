@@ -8,13 +8,13 @@ export default function Questions() {
           categorias
         </h1>
       </div>
-      <div className="flex flex-row gap-20 flex-wrap h-auto justify-center sm:gap-60">
+      <div className="flex flex-row gap-20 flex-wrap h-auto justify-center sm:gap-42">
         <div className="rounded-full">
           <Link
             className="text-3xl font-semibold text-gray-800 hover:text-gray-500 transition-all duration-200 flex flex-col items-center justify-center text-center"
             href={`/quiz/terrestre`}
           >
-            <div className="bg-[#81B2D9] rounded-2xl h-80 mb-10 pr-3 w-80 flex items-center justify-center">
+            <div className="bg-[#81B2D9] rounded-2xl h-60 mb-10 pr-3 w-60 flex items-center justify-center">
               <img
                 className="h-48 "
                 src="/assets/images/bicicleta.png"
@@ -31,7 +31,7 @@ export default function Questions() {
               href={`/quiz/aereo-e-maritimo`}
               className="text-3xl font-semibold text-gray-800 hover:text-gray-500 transition-all duration-200 flex flex-col items-center text-center"
             >
-              <div className="bg-[#81B2D9] rounded-2xl mb-10 w-80 h-80 flex items-center justify-center ">
+              <div className="bg-[#81B2D9] rounded-2xl mb-10 w-60 h-60 flex items-center justify-center ">
                 <img
                   className="h-40  "
                   src="/assets/images/barco-aviao.png"

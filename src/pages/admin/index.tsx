@@ -23,7 +23,7 @@ function AdminPage() {
   ];
 
   return (
-    <div className="flex flex-col pt-40 p-4 gap-4 align-middle items-center">
+    <div className=" flex flex-col pt-40 p-4 gap-4 align-middle items-center min-h-[100vh]">
       <p className="text-3xl font-bold">Criar pergunta</p>
       <div className="flex flex-wrap gap-4 justify-around">
         {paths.map((path) => {

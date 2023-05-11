@@ -19,7 +19,7 @@ export default function Question({
 
   const randomizer = (options: Array<string>) => {
     let randomized = options.sort((a, b) => 0.5 - Math.random());
-    console.log(randomized);
+
     if (randomized.join("") === question.answer) {
       randomizer(options);
     }
@@ -28,8 +28,6 @@ export default function Question({
     console.log("trocou a question");
     setQuestionType(question.type);
     if (question.type === "monte a palavra") randomizer(question.options);
-
-    console.log(question);
   }, [question]);
 
   return (

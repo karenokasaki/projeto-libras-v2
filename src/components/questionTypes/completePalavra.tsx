@@ -33,8 +33,6 @@ export default function CompletePalavra({
   };
   useEffect(() => {
     if (userAnswer !== "") checkAnswer(question._id);
-    console.log("message", typeof message);
-    console.log("answer", typeof userAnswer);
   }, [userAnswer]);
   return (
     <>

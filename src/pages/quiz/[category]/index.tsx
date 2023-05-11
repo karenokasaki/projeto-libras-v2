@@ -22,27 +22,25 @@ export default function CategoryPage() {
   }, [index, questions]);
 
   return (
-    <Suspense fallback={<h1>loading...</h1>}>
-      <div className="flex justify-center items-center flex-col font-poppins h-[100vh] bg-[#44B3E3]">
-        {!start && question && (
-          <div className="flex flex-col items-center">
-            <h1>Bem vindo à categoria: {category}</h1>
-            <p>Vamos começar?</p>
+    <div className="flex justify-center items-center flex-col font-poppins h-[100vh] bg-[#44B3E3]">
+      {!start && question && (
+        <div className="flex flex-col items-center">
+          <h1>Bem vindo à categoria: {category}</h1>
+          <p>Vamos começar?</p>
 
-            <button onClick={() => setStart(true)}>vamos!</button>
-          </div>
-        )}
+          <button onClick={() => setStart(true)}>vamos!</button>
+        </div>
+      )}
 
-        {question ? (
-          start &&
-          setIndex && <Question question={question} setIndex={setIndex} />
-        ) : (
-          <div className="">
-            <h1>terminou</h1>
-            <Link href="/quiz">Voltar para as perguntas</Link>
-          </div>
-        )}
-      </div>
-    </Suspense>
+      {question ? (
+        start &&
+        setIndex && <Question question={question} setIndex={setIndex} />
+      ) : (
+        <div className="">
+          <h1>terminou</h1>
+          <Link href="/quiz">Voltar para as perguntas</Link>
+        </div>
+      )}
+    </div>
   );
 }

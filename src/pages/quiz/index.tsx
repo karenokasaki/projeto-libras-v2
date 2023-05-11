@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Questions() {
   const content = (
-    <section className="bg-[#E4CFB4] pt-24 flex flex-col items-center h-auto pb-8 lg:h-[100vh] ">
+    <section className="bg-[#E4CFB4] pt-24 flex flex-col items-center h-auto pb-8 lg:h-[80vh] lg:pt-20 ">
       <div className="">
         <h1 className="text-7xl font-semibold text-gray-800 lg:text-6xl mb-16">
           categorias

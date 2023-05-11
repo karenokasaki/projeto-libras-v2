@@ -18,14 +18,14 @@ export default function Question({
   const [questionType, setQuestionType] = useState<string>();
 
   const randomizer = (options: Array<string>) => {
-    let randomized = options.sort((a, b) => 0.5 - Math.random());
+    let randomized = [...options].sort(() => 0.5 - Math.random());
 
     if (randomized.join("") === question.answer) {
       randomizer(options);
     }
   };
   useEffect(() => {
-    console.log("trocou a question");
+    console.log("trocou a question:", question);
     setQuestionType(question.type);
     if (question.type === "monte a palavra") randomizer(question.options);
   }, [question]);

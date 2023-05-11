@@ -1,6 +1,7 @@
 import ReactPlayer from "react-player";
 import { useEffect, useState } from "react";
 import api from "@/api/api";
+import NextQuestion from "../NextQuestion";
 
 export default function EscrevaPalavra({
   question,
@@ -25,11 +26,6 @@ export default function EscrevaPalavra({
       setAnswered(true);
       setMessage("resposta certa! parabéns");
       setUserAnswer("");
-      setTimeout(() => {
-        setIndex((prev) => prev + 1);
-        setAnswered(false);
-        setMessage("");
-      }, 1000);
     } catch (error) {
       console.log(error);
     }
@@ -40,41 +36,47 @@ export default function EscrevaPalavra({
 
   return (
     <>
-      <div id="heading">
-        <img src={question.heading} alt="test" width={50} height={50} />
-      </div>
-      <div id="question">
-        <h2>{question.questions}</h2>
-      </div>
-      <div id="options">
-        <ReactPlayer
-          url={question.attach}
-          playing={true}
-          loop={true}
-          controls={true}
-          muted={true}
-        />
-      </div>
-      <div>
-        <label htmlFor="answer"></label>
-        <input
-          type="text"
-          name="answer"
-          onChange={(e) => {
-            setUserAnswer(e.target.value);
-          }}
-        />
-        <button
-          onClick={() => {
-            if (!answered) checkAnswer(question._id);
-          }}
-        >
-          {" "}
-          Acertei?{" "}
-        </button>
-      </div>
+      {!answered ? (
+        <>
+          <div id="heading">
+            <img src={question.heading} alt="test" width={50} height={50} />
+          </div>
+          <div id="question">
+            <h2>{question.questions}</h2>
+          </div>
+          <div id="options">
+            <ReactPlayer
+              url={question.attach}
+              playing={true}
+              loop={true}
+              controls={true}
+              muted={true}
+            />
+          </div>
+          <div>
+            <label htmlFor="answer"></label>
+            <input
+              type="text"
+              name="answer"
+              onChange={(e) => {
+                setUserAnswer(e.target.value);
+              }}
+            />
+            <button
+              onClick={() => {
+                if (!answered) checkAnswer(question._id);
+              }}
+            >
+              {" "}
+              Acertei?{" "}
+            </button>
+          </div>
 
-      {message && <h2>{message}</h2>}
+          {message && <h2>{message}</h2>}
+        </>
+      ) : (
+        <NextQuestion setAnswered={setAnswered} setIndex={setIndex} />
+      )}
     </>
   );
 }

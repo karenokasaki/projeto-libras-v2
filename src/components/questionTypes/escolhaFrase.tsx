@@ -27,11 +27,6 @@ export default function EscolhaFrase({
       setAnswered(true);
       setMessage("resposta certa! parabéns");
       setUserAnswer("");
-      setTimeout(() => {
-        setIndex((prev) => prev + 1);
-        setAnswered(false);
-        setMessage("");
-      }, 1000);
     } catch (error) {
       console.log(error);
     }

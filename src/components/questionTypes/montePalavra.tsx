@@ -48,7 +48,7 @@ export default function MontePalavra({
   };
   useEffect(() => {
     checkAnswer();
-  }, [userAnswer, reload]);
+  }, [userAnswer]);
 
   return (
     <>

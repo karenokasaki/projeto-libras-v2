@@ -21,7 +21,7 @@ function Navbar() {
   const toggleMenu = () => {
     setTogle(!toggle);
   };
-  console.log(currentUser);
+
   return (
     <>
       <nav className="hidden text-2xl justify-center gap-20 items-center shadow-sm shadow-[#44B3E3] fixed lg:flex text-slate-200 bg-[#81B2D9] h-[13.5vh]  w-[100vw]">
@@ -75,7 +75,8 @@ function Navbar() {
                 href="/profile"
                 className="flex  hover:text-white transition-all duration-200 items-center gap-2"
               >
-                perfil
+                <span>perfil</span>
+
                 <img src="/assets/images/user.png" alt="" className="h-10" />
               </Link>
             </div>
@@ -83,8 +84,8 @@ function Navbar() {
               pontos:{" "}
               <span className="font-semibold">
                 {currentUser && currentUser.points > 0 && currentUser.points}
-                <img src="/assets/images/star.png" alt="" className="h-8" />
               </span>
+              <img src="/assets/images/star.png" alt="" className="h-8" />
             </span>
           </div>
         )}

@@ -24,8 +24,8 @@ export default function CompletePalavra({
       await api.get(`/user/add-points/${id}`);
       setMessage("resposta certa! parabéns");
       setTimeout(() => {
-        setMessage("");
-        setIndex((prev) => prev + 1);
+        setAnswered(true);
+        setUserAnswer("");
       }, 1000);
     } catch (error) {
       console.log(error);
@@ -33,8 +33,6 @@ export default function CompletePalavra({
   };
   useEffect(() => {
     if (userAnswer !== "") checkAnswer(question._id);
-    console.log("message", typeof message);
-    console.log("answer", typeof userAnswer);
   }, [userAnswer]);
   return (
     <>

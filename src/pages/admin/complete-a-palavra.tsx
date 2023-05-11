@@ -60,7 +60,7 @@ function CompleteAPalavra() {
       const url = await handleUpload(image);
 
       values.attach = url;
-      console.log(values);
+
       await api.post("/question/create", values);
       router.push("/admin");
     } catch (error) {

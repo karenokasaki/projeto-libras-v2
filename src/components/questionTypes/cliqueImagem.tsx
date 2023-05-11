@@ -50,14 +50,14 @@ export default function CliqueImagem({
           <div id="question" className="mb-6">
             <h2>{question.questions}</h2>
           </div>
-          <div className="flex flex-row  h-[30vh] gap-10">
+          <div className="flex flex-row gap-10">
             {question.options.map((option, i) => {
               return (
                 <img
                   key={i}
                   src={option}
                   alt={`opção ${i}`}
-                  className="w-[25vw] h-[20vh] object-contain"
+                  className="w-[25vw] h-32 object-contain"
                   onClick={(e) => {
                     checkAnswer(i, question._id);
                   }}

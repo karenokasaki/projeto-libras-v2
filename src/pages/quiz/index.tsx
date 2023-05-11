@@ -2,16 +2,16 @@ import Link from "next/link";
 
 export default function Questions() {
   const content = (
-    <section className="bg-[#E4CFB4]  pt-48 flex flex-col items-center h-auto lg:h-[100vh]  ">
+    <section className="bg-[#E4CFB4] pt-24 flex flex-col items-center h-auto pb-8 lg:h-[100vh] ">
       <div className="">
-        <h1 className="text-7xl font-semibold text-gray-800 lg:text-6xl mb-20">
+        <h1 className="text-7xl font-semibold text-gray-800 lg:text-6xl mb-16">
           categorias
         </h1>
       </div>
-      <div className="ml-10 flex flex-row gap-60 flex-wrap h-auto ">
+      <div className="flex flex-row gap-20 flex-wrap h-auto justify-center sm:gap-60">
         <div className="rounded-full">
           <Link
-            className="text-3xl font-semibold text-gray-800 hover:text-gray-500 transition-all duration-200 flex flex-col items-center "
+            className="text-3xl font-semibold text-gray-800 hover:text-gray-500 transition-all duration-200 flex flex-col items-center justify-center"
             href={`/quiz/terrestre`}
           >
             <div className="bg-[#81B2D9] rounded-2xl h-80 mb-10 pr-3 w-80 flex items-center justify-center">
@@ -26,7 +26,7 @@ export default function Questions() {
         </div>
 
         <div className="">
-          <div className="flex ">
+          <div className="flex">
             <Link
               href={`/quiz/aereo-e-maritimo`}
               className="text-3xl font-semibold text-gray-800 hover:text-gray-500 transition-all duration-200 flex flex-col items-center"

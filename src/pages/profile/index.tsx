@@ -16,12 +16,14 @@ function ProfilePage() {
     router.push("/");
   }
   return (
-    <div className="h-[100vh] bg-[#44B3E3]">
-      <h1 className=" text-center pt-56 mb-14 text-5xl">Seu perfil</h1>
+    <div className=" min-h-[82vh] bg-[#44B3E3]">
+      <h1 className=" text-center pt-10 mb-14 text-5xl sm:pt-24 sm:mb-3 sm:text-xl">
+        Seu perfil
+      </h1>
 
-      <div className="  flex justify-center items-center ">
+      <div className="flex justify-center items-center">
         {user && (
-          <div className="flex gap-12">
+          <div className="flex gap-12 flex-wrap">
             <div className="flex flex-col border-2 rounded-lg border-moonstone items-center justify-center w-[30vw] h-[50vh]">
               <Image
                 src="/assets/images/profile.png"

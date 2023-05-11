@@ -14,7 +14,6 @@ export default function CategoryPage() {
   const [index, setIndex] = useState<number>(0);
   const [start, setStart] = useState(false);
   const [question, setQuestion] = useState<Question>();
-  // const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     questions && setQuestion(questions[index]);

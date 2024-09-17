@@ -59,29 +59,28 @@ export default function CliqueVideo({
             className="flex flex-col gap-4 lg:flex-row lg:flex-wrap lg:justify-center pb-4 lg:gap-0  "
           >
             {question.options.map((option, i) => {
-              if (option.length)
-                return (
-                  <div
-                    key={i}
-                    className="flex px-2  flex-row-reverse items-center gap-4 lg:gap-2 lg:h-40 lg:w-[45vw] justify-center "
-                  >
-                    <ReactPlayer
-                      url={option}
-                      playing={true}
-                      loop={true}
-                      muted={true}
-                      height={"auto"}
-                      width={"auto"}
-                    />
-                    <input
-                      type="radio"
-                      name="option"
-                      value={`${i}`}
-                      className="h-10 w-10 rounded-full border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                      onClick={() => checkAnswer(i, question._id)}
-                    />
-                  </div>
-                );
+              return (
+                <div
+                  key={i}
+                  className="flex px-2  flex-row-reverse items-center gap-4 lg:gap-2 lg:h-40 lg:w-[45vw] justify-center "
+                >
+                  <ReactPlayer
+                    url={option}
+                    playing={true}
+                    loop={true}
+                    muted={true}
+                    height={"auto"}
+                    width={"auto"}
+                  />
+                  <input
+                    type="radio"
+                    name="option"
+                    value={`${i}`}
+                    className="h-10 w-10 rounded-full border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                    onClick={() => checkAnswer(i, question._id)}
+                  />
+                </div>
+              );
             })}
           </div>
         </div>
